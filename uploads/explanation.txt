@@ -1,0 +1,65 @@
+
+FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.6+.
+
+### Key Components and Workflow:
+
+1. **FastAPI class (FastAPI())**:
+   - The `FastAPI()` class initializes the application.
+   - It provides methods for routing HTTP requests to Python functions (endpoints) based on the URL and HTTP method (GET, POST, etc.).
+   
+2. **Route Handlers (@app.get(), @app.post(), etc.)**:
+   - Decorators such as `@app.get()`, `@app.post()` bind functions to specific HTTP methods and paths.
+   - Each route handler is a Python function that defines the logic to process the request and return a response.
+   
+3. **Request Handling**:
+   - When a client makes a request (e.g., a browser or another server), FastAPI looks at the HTTP method and path.
+   - FastAPI uses this information to route the request to the appropriate function.
+   
+4. **Path Parameters, Query Parameters, and Request Bodies**:
+   - **Path Parameters**: Dynamic parts of the URL. FastAPI automatically maps them to function parameters.
+   - **Query Parameters**: Data sent in the URL's query string (`?key=value`).
+   - **Request Body**: Data sent in the body of a POST request. FastAPI automatically parses and validates it based on the expected format.
+   
+5. **Pydantic Models**:
+   - FastAPI uses Pydantic models to define the expected structure of data (request bodies or query parameters).
+   - These models provide data validation, serialization, and documentation generation.
+
+6. **Asynchronous Programming**:
+   - FastAPI supports asynchronous (async/await) programming, allowing for handling a large number of requests without blocking other processes.
+   - This is especially useful for I/O-bound tasks like making HTTP requests or reading from a database.
+   
+7. **Automatic OpenAPI Documentation**:
+   - FastAPI automatically generates OpenAPI documentation for the API (accessible at `/docs` by default).
+   - It provides an interactive interface (Swagger UI) for testing the API.
+
+8. **Exception Handling**:
+   - FastAPI allows defining custom exception handlers for handling errors in the application.
+   - When an error occurs, FastAPI can return structured error responses to the client.
+
+9. **Dependency Injection**:
+   - FastAPI supports dependency injection to handle reusable components (e.g., database sessions, authentication).
+   - This makes it easier to manage application state and avoid code duplication.
+
+10. **Security**:
+    - FastAPI includes features for handling security, such as OAuth2 authentication, API key validation, and password hashing.
+    
+11. **Responses**:
+    - FastAPI supports automatic response generation (e.g., JSON responses) and also allows specifying custom response types and status codes.
+
+### General Workflow:
+
+1. **Request**:
+   - A user (or client) makes an HTTP request to a URL, such as `POST /convert`.
+   
+2. **Routing**:
+   - FastAPI looks at the request and matches the URL and method to the appropriate function (route handler).
+   
+3. **Processing**:
+   - FastAPI processes the request: It parses parameters, validates data (using Pydantic models), and executes the function.
+   
+4. **Response**:
+   - The route handler returns a response (usually JSON). FastAPI serializes the return value and sends it back to the client.
+   
+5. **Error Handling**:
+   - If an error occurs, FastAPI automatically returns an appropriate HTTP error code and message.
+
