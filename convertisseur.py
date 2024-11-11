@@ -16,6 +16,11 @@ UPLOAD_DIR.mkdir(exist_ok=True)
 # Pour servir les fichiers statiques depuis le dossier 'uploads'
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 
+@app.get("/")
+async def read_root():
+    """Route d'accueil qui affiche un message."""
+    return {"message": "JSF Converter"}
+
 def convert_pdf_to_docx(pdf_file_path: str, docx_file_path: str):
     """Convertit un fichier PDF en DOCX."""
     try:
